@@ -27,10 +27,10 @@ const deleteTestimonial = async (id) => {
 };
 
 const addTestimonial = async (testimonialData) => {
-      const { user_id, rating, description } = testimonialData;
+      const { user_id, rating, description,title } = testimonialData;
       const result = await db.query(
-            "INSERT INTO testimonials (user_id, rating, description) VALUES ($1, $2, $3) RETURNING *",
-            [user_id, rating, description]
+            "INSERT INTO testimonials (user_id, rating, description,title) VALUES ($1, $2, $3, $4) RETURNING *",
+            [user_id, rating, description,title]
       );
       return result.rows[0];
 };
