@@ -18,6 +18,7 @@ import ConfirmAppointment from "./pages/navodya/ConfirmAppointment";
 import AdminAppointmentView from "./pages/navodya/AdminAppointmentView";
 import AdminAppointmentList from "./pages/navodya/AdminAppointmentList";
 import TestimonialPage from './pages/amalie/TestimonialPage';
+import AdminTestimonials from './pages/amalie/AdminTestimonials';
 
 const AnimatedRoutes = () => {
     const location = useLocation();
@@ -51,6 +52,7 @@ const AnimatedRoutes = () => {
                         <Route path="/pay" element={<Home/>}/>
                         <Route path="/viewList" element={<AdminAppointmentList/>}/>
                         <Route path="/testimonials" element={<TestimonialPage/>}/>
+                        <Route path="/admin-testimonials" element={<AdminTestimonials/>}/>
                     </Routes>
                 </div>
             </CSSTransition>
