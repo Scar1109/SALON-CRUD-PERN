@@ -18,6 +18,7 @@ import appointmentStatusRoutes from './controllers/appointment.controller.js';
 import appointmentConfirmedRoutes from './controllers/appointment.controller.js';
 import appointmentRejectedRoutes from './controllers/appointment.controller.js';
 import appointmentDeleteRoutes from './controllers/appointment.controller.js';
+import testimonialRoutes from './controllers/testimonial.controller.js';
 
 dotenv.config();
 
@@ -44,7 +45,7 @@ app.use(
 );
 // Middleware
 app.use(bodyParser.json());
-// app.use('/api/employees', employeeRoutes);
+app.use('/api/employees', employeeRoutes);
 // app.use('/api/beautyservices', beautyServicesRoutes);
 // app.use('/api/selectprofessional', professionalRoutes);
 // app.use('/api/appointmentservice', appointmentRoutes);
@@ -53,6 +54,8 @@ app.use(bodyParser.json());
 // app.use('/api/appointmentconfirmed', appointmentConfirmedRoutes);
 // app.use('/api/appointmentrejected', appointmentRejectedRoutes);
 // app.use('/api/appointmentdelete', appointmentDeleteRoutes)
+app.use('/api/testimonials', testimonialRoutes);
+
 
 
 app.use(ErrorHandler)
