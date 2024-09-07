@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState,useEffect}from "react";
 import Cookies from "js-cookie";
 import logo2 from "../../images/logow.png";
 import homepic5 from "../../images/d.jpg";
@@ -6,6 +6,7 @@ import { useLogout } from "../pamuditha/authUtils";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import TestimonialCard from "./TestimonialCard";
+import axios from "axios";
 
 // Navbar Component
 function Navbar() {
@@ -181,6 +182,26 @@ function Navbar() {
 }
 
 function TestimonialPage() {
+
+    const [testimonials, setTestimonials] = useState([]);
+
+    // Fetch all testimonials function
+    const fetchAllTestimonials = async () => {
+        try {
+            const response = await axios.get(
+                "http://localhost:3001/api/testimonials"
+            );
+            console.log(response.data);
+            setTestimonials(response.data);
+        } catch (err) {
+            console.error('Error fetching testimonials:', err);
+        }
+    };
+
+    useEffect(() => {
+        fetchAllTestimonials();
+    },[]);
+
     return (
         <div>
             <div
@@ -205,8 +226,11 @@ function TestimonialPage() {
                     //content
                     <div className="p-4">
                         <div className="grid grid-cols-3 gap-4">
-                            {[...Array(9)].map((_, index) => (
-                                <TestimonialCard key={index} />
+                        {testimonials.map((testimonial, index) => (
+                                <TestimonialCard
+                                    key={index}
+                                    testimonial={testimonial}
+                                />
                             ))}
                         </div>
                     </div>
