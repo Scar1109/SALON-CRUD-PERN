@@ -1,21 +1,18 @@
 import React from "react";
-import logo from "../../images/logo.jpeg";
 
-function TestimonialCard() {
+function TestimonialCard({ testimonial }) {
     return (
         <div className="flex border border-gray-300 rounded-lg overflow-hidden shadow-lg">
             {/* Image Section */}
             <img
                 className="w-1/3 h-auto object-cover"
-                src={logo}
+                src={testimonial.image || "default-image-url.jpg"} // Use a default image if none provided
                 alt="Testimonial image"
             />
             {/* Text Section */}
             <div className="flex-1 p-4">
                 <p className="text-gray-700">
-                    "This is a testimonial text that highlights the service or
-                    product experience. It's an example of how users might
-                    review or comment on the service."
+                    {testimonial.description || "No testimonial text available."}
                 </p>
             </div>
         </div>
