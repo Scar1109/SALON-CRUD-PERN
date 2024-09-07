@@ -8,7 +8,7 @@ function AdminTestimonials() {
                 <Sidebar />
             </div>
             <div className="w-[80%] h-full bg-pink-500 p-4 julius-sans-one-regular">
-                
+                //content goes here
             </div>
         </div>
     );
