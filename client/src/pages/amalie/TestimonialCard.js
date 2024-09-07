@@ -2,7 +2,7 @@ import React from "react";
 import { Rate } from 'antd';
 import logo from "../../images/logo.jpeg";
 
-function TestimonialCard() {
+function TestimonialCard({testimonial}) {
 
     return (
         <div className="flex border border-gray-300 rounded-lg overflow-hidden shadow-lg">
@@ -21,12 +21,12 @@ function TestimonialCard() {
                     <p className="ml-3 mb-2">join date</p>
                     </div>
                     <div className="ml-2 mt-2">
-                        <Rate disabled defaultValue={2} />
+                        <Rate disabled defaultValue={testimonial.rating} />
                     </div>
                 </div>
                 <div>
                     <h className="ml-2 mt-2 font-bold">Review Title</h>
-                    <p className="ml-3 mt-2">Review Body</p>
+                    <p className="ml-3 mt-2">{testimonial.description}</p>
                 </div>
             </div>
         </div>
