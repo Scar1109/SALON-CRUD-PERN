@@ -18,7 +18,7 @@ function TestimonialCard({testimonial}) {
                     <img class="w-10 h-10 rounded-full" src="https://cdn-icons-png.flaticon.com/256/3135/3135768.png" alt="Rounded avatar"></img>
                     <div className="flex flex-col">
                     <h className="ml-2 mt-1 text-base font-bold">Reviewer Name</h>
-                    <p className="ml-3 mb-2">{testimonial.created_at}</p>
+                    <p className="ml-3 mb-2">7-08-2024</p>
                     </div>
                     <div className="ml-2 mt-2">
                         <Rate disabled defaultValue={testimonial.rating} />
