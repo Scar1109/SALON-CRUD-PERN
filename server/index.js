@@ -44,15 +44,15 @@ app.use(
 );
 // Middleware
 app.use(bodyParser.json());
-app.use('/api/employees', employeeRoutes);
-app.use('/api/beautyservices', beautyServicesRoutes);
-app.use('/api/selectprofessional', professionalRoutes);
-app.use('/api/appointmentservice', appointmentRoutes);
-app.use('/api/appointmentdetails', appointmentDetailsRoutes);
-app.use('/api/appointmentstatus', appointmentStatusRoutes);
-app.use('/api/appointmentconfirmed', appointmentConfirmedRoutes);
-app.use('/api/appointmentrejected', appointmentRejectedRoutes);
-app.use('/api/appointmentdelete', appointmentDeleteRoutes)
+// app.use('/api/employees', employeeRoutes);
+// app.use('/api/beautyservices', beautyServicesRoutes);
+// app.use('/api/selectprofessional', professionalRoutes);
+// app.use('/api/appointmentservice', appointmentRoutes);
+// app.use('/api/appointmentdetails', appointmentDetailsRoutes);
+// app.use('/api/appointmentstatus', appointmentStatusRoutes);
+// app.use('/api/appointmentconfirmed', appointmentConfirmedRoutes);
+// app.use('/api/appointmentrejected', appointmentRejectedRoutes);
+// app.use('/api/appointmentdelete', appointmentDeleteRoutes)
 
 
 app.use(ErrorHandler)

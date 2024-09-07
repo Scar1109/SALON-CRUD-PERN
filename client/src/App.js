@@ -17,6 +17,7 @@ import UpdateRecord from "./pages/com/updatec";
 import ConfirmAppointment from "./pages/navodya/ConfirmAppointment";
 import AdminAppointmentView from "./pages/navodya/AdminAppointmentView";
 import AdminAppointmentList from "./pages/navodya/AdminAppointmentList";
+import TestimonialPage from './pages/amalie/TestimonialPage';
 
 const AnimatedRoutes = () => {
     const location = useLocation();
@@ -49,7 +50,7 @@ const AnimatedRoutes = () => {
                         <Route path="/view" element={<AdminAppointmentView/>}/>
                         <Route path="/pay" element={<Home/>}/>
                         <Route path="/viewList" element={<AdminAppointmentList/>}/>
-
+                        <Route path="/testimonials" element={<TestimonialPage/>}/>
                     </Routes>
                 </div>
             </CSSTransition>

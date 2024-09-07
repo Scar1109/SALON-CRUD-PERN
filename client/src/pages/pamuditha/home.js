@@ -503,10 +503,16 @@ const Home = () => {
                      backgroundRepeat: 'no-repeat',
                  }}
             >
-                <h1 className="text-5xl julius-sans-one-regular pt-12 pb-4 pl-4">Testimonials</h1>
-
+                <div className="flex flex-row justify-content-between">
+                    <h1 className="text-5xl julius-sans-one-regular pt-12 pb-4 pl-4">Testimonials</h1>
+                    <button  
+                    onClick={() => (window.location.href = '/testimonials')}
+                    class="bg-black/30 backdrop-blur-md text-white font-semibold py-2 px-6 rounded-lg shadow-lg border border-black/20 hover:bg-black/40 transition duration-300 mb-4 mt-5 mr-xl-5">
+                        See More
+                    </button>
+                </div>
                 <div className="p-4">
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-3 gap-4"> 
                         {/* Render 6 cards */}
                         {[...Array(6)].map((_, index) => (
                             <Card key={index}/>

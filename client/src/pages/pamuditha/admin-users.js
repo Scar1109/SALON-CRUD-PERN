@@ -10,30 +10,30 @@ const Layout = () => {
     const [showModal, setShowModal] = useState(false); // State to control the visibility of the modal
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const checkAdmin = async () => {
-            try {
-                const response = await fetch('http://localhost:3001/api/user/admin', {
-                    credentials: 'include' // Include credentials with the request
-                });
+    // useEffect(() => {
+    //     const checkAdmin = async () => {
+    //         try {
+    //             const response = await fetch('http://localhost:3001/api/user/admin', {
+    //                 credentials: 'include' // Include credentials with the request
+    //             });
 
-                if (response.status === 403 || response.status === 401) {
-                    navigate('/'); // Redirect if not authorized
-                    return;
-                }
+    //             if (response.status === 403 || response.status === 401) {
+    //                 navigate('/'); // Redirect if not authorized
+    //                 return;
+    //             }
 
-                const data = await response.json();
-                if (!data.isAdmin) {
-                    navigate('/'); // Redirect if the user is not an admin
-                }
-            } catch (error) {
-                console.error('Error checking user role:', error);
-                navigate('/'); // Redirect in case of an error
-            }
-        };
+    //             const data = await response.json();
+    //             if (!data.isAdmin) {
+    //                 navigate('/'); // Redirect if the user is not an admin
+    //             }
+    //         } catch (error) {
+    //             console.error('Error checking user role:', error);
+    //             navigate('/'); // Redirect in case of an error
+    //         }
+    //     };
 
-        checkAdmin();
-    }, [navigate]);
+    //     checkAdmin();
+    // }, [navigate]);
 
     // Fetch user data from the backend
     useEffect(() => {
