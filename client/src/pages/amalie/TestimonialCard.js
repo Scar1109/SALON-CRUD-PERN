@@ -18,13 +18,16 @@ function TestimonialCard() {
                     <img class="w-10 h-10 rounded-full" src="https://cdn-icons-png.flaticon.com/256/3135/3135768.png" alt="Rounded avatar"></img>
                     <div className="flex flex-col">
                     <h className="ml-2 mt-1 text-base font-bold">Reviewer Name</h>
-                    <p className="ml-3">join date</p>
+                    <p className="ml-3 mb-2">join date</p>
                     </div>
                     <div className="ml-2 mt-2">
                         <Rate disabled defaultValue={2} />
                     </div>
                 </div>
-                
+                <div>
+                    <h className="ml-2 mt-2 font-bold">Review Title</h>
+                    <p className="ml-3 mt-2">Review Body</p>
+                </div>
             </div>
         </div>
     );
