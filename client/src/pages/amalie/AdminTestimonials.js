@@ -296,9 +296,12 @@ function AdminTestimonials() {
                                                                         }
                                                                   </td>
                                                                   <td className="py-2 px-4 text-gray-700">
-                                                                        {
-                                                                              testimonial.description
-                                                                        }
+                                                                  {testimonial.description.length > 10
+                                                                        ? testimonial.description.slice(
+                                                                              0,
+                                                                              25
+                                                                        ) + "..."
+                                                                        : testimonial.description}
                                                                   </td>
                                                                   <td className="py-2 px-4 text-gray-700">
                                                                         {
