@@ -94,7 +94,12 @@ function TestimonialCard({ testimonial, onDelete, onUpdate }) {
                                     {testimonial.title}
                               </h>
                               <p className="ml-3 mt-2">
-                                    {testimonial.description}
+                                    {testimonial.description.length > 10
+                                          ? testimonial.description.slice(
+                                                0,
+                                                25
+                                          ) + "..."
+                                          : testimonial.description}
                               </p>
                         </div>
                   </div>
