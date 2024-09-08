@@ -10,7 +10,7 @@ function AdminTestimonials() {
   const [showModal, setShowModal] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState(null);
   const [currentPageRating, setCurrentPageRating] = useState(1);
-
+  const [userData, setUserData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5; // Number of testimonials per page
   const totalPages = Math.ceil(filteredTestimonials.length / itemsPerPage);
@@ -19,6 +19,44 @@ function AdminTestimonials() {
   );
 
   const [expandedRows, setExpandedRows] = useState({});
+
+  //get user data
+   // Fetch user data
+   useEffect(() => {
+    const fetchUserData = async () => {
+            try {
+                    const response = await fetch(
+                            "http://localhost:3001/api/user/profile",
+                            {
+                                    method: "GET",
+                                    headers: {
+                                            "Content-Type":
+                                                    "application/json",
+                                    },
+                                    credentials: "include", // Include cookies for session
+                            }
+                    );
+
+                    if (response.ok) {
+                            const data = await response.json();
+                            console.log("Fetched user data:", data); // Log the fetched data
+                            setUserData(data);
+                    } else {
+                            console.error(
+                                    "Failed to fetch user data, status:",
+                                    response.status
+                            );
+                    }
+            } catch (error) {
+                    console.error(
+                            "Error fetching user data:",
+                            error
+                    );
+            }
+    };
+
+    fetchUserData();
+}, []);
 
   // Toggle function to switch between expanded and collapsed text
   const toggleExpand = (index) => {
@@ -313,7 +351,7 @@ function AdminTestimonials() {
                 {testimonial.id}
               </td>
               <td className="py-2 px-4 text-gray-700">
-                {testimonial.customerEmail || "N/A"}
+              {userData && userData.email ? userData.email : "N/A"}
               </td>
               <td className="py-2 px-4 text-gray-700 max-w-xs whitespace-normal overflow-hidden">
                 {testimonial.title}
