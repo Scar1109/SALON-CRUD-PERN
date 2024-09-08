@@ -1,7 +1,7 @@
 import db from "../db.js";
 
 const getAllTestimonials = async () => {
-      const records = await db.query("SELECT * FROM testimonials");
+      const records = await db.query("SELECT * FROM testimonials ORDER BY created_at DESC");
       return records.rows;
 };
 
@@ -36,21 +36,38 @@ const addTestimonial = async (testimonialData) => {
 };
 
 const updateTestimonial = async (id, testimonialData) => {
-      const { status } = testimonialData; // Extract only status from the provided data
       try {
+          const { rating, title, description } = testimonialData;
+          const result = await db.query(
+              `UPDATE testimonials
+               SET rating = $1, title = $2, description = $3
+               WHERE id = $4
+               RETURNING *`,
+              [rating, title, description, id]
+          );
+          return result.rows[0];
+      } catch (error) {
+          console.error("Error updating testimonial:", error);
+          throw new Error("Error updating testimonial");
+      }
+  };
+
+  const approveTestimonial = async (id,testimonialData) => {
+      try {
+            const {status} = testimonialData;
             const result = await db.query(
                   `UPDATE testimonials
-             SET status = $1, created_at = CURRENT_TIMESTAMP
-             WHERE id = $2
-             RETURNING *`,
+                   SET status = $1
+                   WHERE id = $2
+                   RETURNING *`,
                   [status, id]
             );
             return result.rows[0];
       } catch (error) {
             console.error("Error updating testimonial:", error);
-            throw new Error("Error updating testimonial");
+            throw new Error("Error updating testimonial");        
       }
-};
+  }
 
 export default {
       getAllTestimonials,
@@ -58,4 +75,5 @@ export default {
       deleteTestimonial,
       addTestimonial,
       updateTestimonial,
+      approveTestimonial
 };
