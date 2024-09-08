@@ -54,18 +54,36 @@ router.post('/', async (req, res, next) => {
 // Update a testimonial by ID
 router.put('/:id', async (req, res, next) => {
     try {
-        // Only update the fields provided in the request body
-        const { status } = req.body;
-        const updatedTestimonial = await service.updateTestimonial(req.params.id, { status });
+        const { id } = req.params;
+        const { rating, title, description } = req.body;
+        const updatedTestimonial = await service.updateTestimonial(id, { rating, title, description });
         if (!updatedTestimonial) {
-            res.status(404).json('No record with given id: ' + req.params.id);
-        } else {
-            res.send(updatedTestimonial);
+            return res.status(404).json({ error: "Testimonial not found" });
         }
+        res.status(200).json(updatedTestimonial);
     } catch (error) {
-        next(error);
+        console.error("Error updating testimonial:", error);
+        res.status(500).json({ error: "Error updating testimonial" });
     }
 });
+
+
+// Approve a testimonial by ID
+router.put('/approve/:id',async (req,res,next) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+        const updatedTestimonial = await service.approveTestimonial(id, { status });
+        if (!updatedTestimonial) {
+            return res.status(404).json({ error: "Testimonial not found" });
+        }
+        res.status(200).json(updatedTestimonial);
+    } catch (error) {
+        console.error("Error approving testimonial:", error);
+        res.status(500).json({ error: "Error approving testimonial" });
+    }
+}
+);
 
 
 export default router;
