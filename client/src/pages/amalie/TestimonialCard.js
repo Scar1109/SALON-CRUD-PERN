@@ -3,6 +3,7 @@ import { Flex, Rate } from "antd";
 import logo from "../../images/logo.jpeg";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import axios from "axios";
+import { message } from "antd";
 
 const desc = ["Terrible", "Bad", "Normal", "Good", "Wonderful"];
 
@@ -57,6 +58,8 @@ function TestimonialCard({ testimonial, onDelete, onUpdate, userData }) {
                         toggleModal();
                 } catch (error) {
                         console.error("Error updating testimonial:", error);
+                        message.error("Error updating testimonial ");
+
                 }
         };
 
