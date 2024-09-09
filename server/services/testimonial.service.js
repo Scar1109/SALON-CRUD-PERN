@@ -2,11 +2,17 @@ import db from "../db.js";
 
 const getAllTestimonials = async () => {
       const records = await db.query(
-          "SELECT * FROM testimonials WHERE status = 'approved' ORDER BY created_at DESC"
+          "SELECT * FROM testimonials ORDER BY created_at DESC"
       );
       return records.rows;
   };
   
+  const getApprovedTestimonials = async () => {
+        const records = await db.query(
+            "SELECT * FROM testimonials WHERE status = 'approved' ORDER BY created_at DESC"
+        );
+        return records.rows;
+    };
 
 const getTestimonialById = async (id) => {
         const record = await db.query(
@@ -79,4 +85,5 @@ export default {
         addTestimonial,
         updateTestimonial,
         approveTestimonial,
+        getApprovedTestimonials
 };

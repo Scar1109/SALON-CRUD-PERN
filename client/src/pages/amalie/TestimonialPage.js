@@ -218,7 +218,7 @@ function TestimonialPage() {
         const fetchAllTestimonials = async () => {
                 try {
                         const response = await axios.get(
-                                "http://localhost:3001/api/testimonials"
+                                "http://localhost:3001/api/testimonials/approved"
                         );
                         console.log(response.data);
                         setTestimonials(response.data);
@@ -346,7 +346,7 @@ function TestimonialPage() {
                                         <Navbar />
                                 </div>
                                 <div
-                                        className=" h-[] flex flex-col space-x-5 bg-pink-500 "
+                                        className=" h-[] flex flex-col space-x-5 bg-pink-500 h-100"
                                         id="testimonials"
                                         style={{
                                                 backgroundImage: `url(${homepic5})`,

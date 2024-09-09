@@ -23,6 +23,15 @@ router.get("/", async (req, res, next) => {
         }
 });
 
+router.get("/approved", async (req, res, next) => {
+        try {
+                const testimonials = await service.getApprovedTestimonials();
+                res.send(testimonials);
+        } catch (error) {
+                next(error);
+        }
+});
+
 // Get a testimonial by ID
 router.get("/:id", async (req, res, next) => {
         try {
