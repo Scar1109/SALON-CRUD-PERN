@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import TestimonialCard from "./TestimonialCard";
 import axios from "axios";
 import { Flex, Rate } from "antd";
+import { message } from "antd";
 
 const desc = ["Terrible", "Bad", "Normal", "Good", "Wonderful"];
 
@@ -239,8 +240,10 @@ function TestimonialPage() {
                         setTestimonials(
                                 testimonials.filter((t) => t.id !== id)
                         );
+                        message.success("Testimonial deleted successfully");
                 } catch (err) {
                         console.error("Error deleting testimonial:", err);
+                        message.error("Error deleting testimonial");
                 }
         };
 
@@ -251,8 +254,10 @@ function TestimonialPage() {
                                 updatedTestimonial
                         );
                         fetchAllTestimonials(); // Refresh the list to show updated data
+                        message.success("Testimonial updated successfully");
                 } catch (err) {
                         console.error("Error updating testimonial:", err);
+                        message.error("Error updating testimonial");
                 }
         };
 
@@ -286,14 +291,20 @@ function TestimonialPage() {
                         setValue(0); // Reset the rating
                         toggleModal(); // Close the modal after submission
                         fetchAllTestimonials(); // Refresh the list to show the newly added testimonial
+                        message.success("Testimonial submitted successfully");
                 } catch (err) {
                         console.error("Error submitting testimonial:", err);
+                        message.error("Error submitting testimonial");
                 }
         };
 
         // Toggle modal visibility
         const toggleModal = () => {
+                if(userData) {
                 setIsModalOpen((prev) => !prev); // Toggle modal state
+                } else {
+                        message.error("Please login to submit a testimonial");
+                }
         };
 
         // Fetch user data

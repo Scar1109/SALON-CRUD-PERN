@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "../com/admindash";
 import axios from "axios";
 import { FaEdit, FaTrash } from "react-icons/fa"; // Import icons if not already imported
+import { message } from "antd";
 
 function AdminTestimonials() {
   const [testimonials, setTestimonials] = useState([]);
@@ -20,7 +21,6 @@ function AdminTestimonials() {
 
   const [expandedRows, setExpandedRows] = useState({});
 
-  //get user data
    // Fetch user data
    useEffect(() => {
     const fetchUserData = async () => {
@@ -65,6 +65,7 @@ function AdminTestimonials() {
       [index]: !prevState[index]
     }));
   };
+
   // Calculate indices for pagination
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -109,7 +110,8 @@ function AdminTestimonials() {
       setTestimonials(response.data);
     } catch (err) {
       console.error("Error fetching testimonials:", err);
-      alert("Failed to fetch testimonials. Please try again later.");
+      message.error("Failed to fetch testimonials. Please try again later.");
+
     }
   };
 
@@ -202,9 +204,10 @@ function AdminTestimonials() {
         setTestimonials((prevTestimonials) =>
           prevTestimonials.filter((testimonial) => testimonial.id !== id)
         );
+        message.success("Testimonial deleted successfully.");
       } catch (err) {
         console.error("Error deleting testimonial:", err);
-        alert("Failed to delete testimonial. Please try again later.");
+        message.error("Failed to delete testimonial. Please try again later.");
       }
     }
   };
@@ -222,9 +225,10 @@ function AdminTestimonials() {
             : testimonial
         )
       );
+      message.success("Testimonial approved successfully.");
     } catch (err) {
       console.error("Error approving testimonial:", err);
-      alert("Failed to approve testimonial. Please try again later.");
+      message.error("Failed to approve testimonial. Please try again later.");
     }
   };
 
